@@ -1,9 +1,7 @@
 
 
-Rule 1 : Color X should always be preceded by Color Y
+Rule 1 : Color Green should always be preceded by a RuledRel
 
-Rule 2 : Color X should always be followed by Color Z
+Rule 2 : Color Green should always be followed by a RuledRel
 
-Rule 3 : Between Color Y and Z there should be Color X
-
-Rule 4 : All nodes should satisfy Color F , if not enforce with Enforcer F 
+Rule 3 : Replace all green with no Color
