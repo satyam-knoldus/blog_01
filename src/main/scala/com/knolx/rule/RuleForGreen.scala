@@ -48,7 +48,8 @@ object RuleForGreen {
   def replace(): RelRule.MatchHandler[RuleForGreen] = (_, call) => {
     val rel: RelNode = call.rel(0)
     val desiredTraits = rel.getTraitSet.replace(ColorTrait.None)
-    call.transformTo(rel.copy(desiredTraits, rel.getInputs))
+    val enforce = new RuledRel(rel.getCluster, desiredTraits, rel.getInput(0))
+    call.transformTo(enforce)
   }
 
   class Config extends RelRule.Config {

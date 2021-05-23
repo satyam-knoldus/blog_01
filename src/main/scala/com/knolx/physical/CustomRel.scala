@@ -22,13 +22,10 @@ sealed trait CustomRel extends AbstractRelNode {
 
 class ColoredRel(val cluster: RelOptCluster, val traits: RelTraitSet, input: RelNode) extends SingleRel(cluster, traits, input) with CustomRel {
   override def copy(traitSet: RelTraitSet, inputs: util.List[RelNode]): RelNode = new ColoredRel(getCluster, traitSet, sole(inputs))
-
 }
 
 class LeafRel(val cluster: RelOptCluster, val traits: RelTraitSet) extends AbstractRelNode(cluster, traits) with CustomRel {
-
   override def copy(traitSet: RelTraitSet, inputs: util.List[RelNode]): RelNode =
     if (inputs.isEmpty) new LeafRel(getCluster, traitSet)
     else new ColoredRel(getCluster, traitSet, sole(inputs))
-
 }
